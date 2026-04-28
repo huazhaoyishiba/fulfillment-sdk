@@ -1,0 +1,49 @@
+## ===================================================================
+## Fulfillment SDK 配置参考（application-example.yml）
+## 将以下配置复制到你的项目 application.yml 中，按需修改
+## ===================================================================
+#
+## ---------- 数据源（必须由接入方自行配置） ----------
+#spring:
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/your_db
+#    username: your_username
+#    password: your_password
+#    driver-class-name: org.postgresql.Driver
+#  # 如果使用 SDK 自带的 MyBatis 实现，需要开启驼峰映射
+#  # mybatis:
+#  #   configuration:
+#  #     map-underscore-to-camel-case: true
+#
+## ---------- SDK 核心配置 ----------
+#fulfillment:
+#  # 默认最大重试次数（每个任务最多重试几次）
+#  default-max-retry-count: 3
+#
+#  # Handler 执行超时时间（秒），0 表示不设置超时
+#  handler-timeout-seconds: 30
+#
+#  # 幂等记录过期时间（小时）
+#  idempotent-expire-hours: 24
+#
+#  # 错误信息最大长度（防止数据库字段溢出）
+#  max-error-message-length: 500
+#
+#  # 结果摘要最大长度
+#  max-result-summary-length: 500
+#
+#  # ---------- 线程池配置 ----------
+#  # Handler 超时控制线程池核心线程数
+#  handler-thread-pool-core-size: 2
+#  # Handler 超时控制线程池最大线程数
+#  handler-thread-pool-max-size: 10
+#  # 空闲线程存活时间（秒）
+#  handler-thread-pool-keep-alive-seconds: 60
+#  # 线程池队列容量
+#  handler-thread-pool-queue-capacity: 200
+#
+#  # ---------- 自动重试配置 ----------
+#  # 每次调用 retryFailedTasks() 最多处理的任务数
+#  retry-batch-size: 50
+#  # 注意：SDK 不内置调度器，请在宿主应用中自行调度 retryFailedTasks()
+#  # 例如：@Scheduled(fixedDelay = 60000) 或 XXL-JOB / Quartz

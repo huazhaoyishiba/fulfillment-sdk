@@ -1,0 +1,4 @@
+# MyBatis 持久化实现自动装配配置
+# 当引入 fulfillment-storage-mybatis 模块时，Spring Boot 会自动加载 MyBatisAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.example.fulfillment.config.MyBatisAutoConfiguration

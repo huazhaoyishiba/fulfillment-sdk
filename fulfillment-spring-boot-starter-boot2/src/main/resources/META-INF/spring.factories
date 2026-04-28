@@ -1,0 +1,9 @@
+# Spring Boot 2.x 自动装配配置
+# 当引入此 starter 时，Spring Boot 会自动加载以下配置类
+#
+# 装配顺序：
+# 1. FulfillmentCoreAutoConfiguration - 核心基础能力（无条件，总是加载）
+# 2. FulfillmentRuntimeAutoConfiguration - 完整运行时服务（条件：4 个 Repository 都存在）
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.example.fulfillment.config.FulfillmentCoreAutoConfiguration,\
+com.example.fulfillment.config.FulfillmentRuntimeAutoConfiguration

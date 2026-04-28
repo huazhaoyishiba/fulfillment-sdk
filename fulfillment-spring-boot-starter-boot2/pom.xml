@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.example</groupId>
+        <artifactId>fulfillment-sdk</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>fulfillment-spring-boot-starter-boot2</artifactId>
+    <name>fulfillment-spring-boot-starter-boot2</name>
+    <description>Fulfillment SDK Spring Boot 2.x Starter：自动装配、配置、Service 实现（Java 8 兼容）</description>
+
+    <dependencies>
+        <!-- 核心模块 -->
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>fulfillment-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>fulfillment-storage-spi</artifactId>
+        </dependency>
+
+        <!-- Spring Boot 基础依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <!-- Spring 事务支持（用于 @Transactional，不包含 JDBC） -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+        </dependency>
+        <!-- 注意：starter 不引入 spring-jdbc / spring-boot-starter-jdbc，完全去 JDBC 化 -->
+        <!-- 异常处理使用 spring-tx 中的 DataIntegrityViolationException（不依赖 spring-jdbc） -->
+        <!-- Validation：DTO 参数校验（JSR-303） -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- 注意：starter 不包含 JDBC/MyBatis 依赖，也不包含 storage-mybatis -->
+        <!-- 如果需要持久化能力，请额外引入 fulfillment-storage-mybatis 或自行实现 Repository -->
+
+        <!-- ========== 测试依赖 ========== -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- JDBC Starter：测试需要 DataSource -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- MyBatis 持久化实现：测试需要 -->
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>fulfillment-storage-mybatis</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- MyBatis Spring Boot Starter：测试需要 -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- H2 内嵌数据库：测试用（零外部依赖，任何人都能直接跑测试） -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>

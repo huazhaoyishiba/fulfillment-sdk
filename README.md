@@ -179,7 +179,7 @@ public class MyBatisPlusPaymentRecordRepository implements PaymentRecordReposito
 
 ### 1. 添加依赖
 
-在你的项目中添加 SDK 依赖（假设已发布到 Maven 仓库）：
+在你的项目中添加 SDK 依赖（已发布到 Maven 仓库）：
 
 ```xml
 <!-- 1. SDK Starter（必须） -->
